@@ -1,0 +1,12 @@
+configparser
+requests
+uuid
+argparse
+pytz
+asyncio
+pyppeteer
+pdf2image
+smtplib
+email
+rich
+locale

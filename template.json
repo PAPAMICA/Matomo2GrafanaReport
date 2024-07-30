@@ -1,0 +1,3614 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 1,
+    "id": 14,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "adt0xxujtdn9cf"
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 9,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<body style=\"display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;\">\n    <img src=\"https://send.genevois-informatique.com/f.php?h=3OjZFpIP&p=1\" alt=\"Image centrée\" style=\"display: block; margin: auto; max-width: 300px; height: auto;\">\n</body>",
+          "mode": "markdown"
+        },
+        "pluginVersion": "11.1.1",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "adt0xxujtdn9cf"
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 3
+        },
+        "id": 10,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "<body>\n    <p style=\"text-align: center; font-size: 1.5em;\">\n        Statistique de visites pour le site <a href=\"https://${SITE}\" style=\"font-weight: bold;\">${SITE}</a> sur la période suivante :\n    </p>\n    <p style=\"text-align: center; font-size: 1.5em;\">\n        ${Periode}\n    </p>\n</body>",
+          "mode": "html"
+        },
+        "pluginVersion": "11.1.1",
+        "transparent": true,
+        "type": "text"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs uniques"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Pages vues"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 0,
+          "y": 7
+        },
+        "id": 22,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": true,
+          "text": {
+            "titleSize": 25,
+            "valueSize": 50
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Visites"
+              },
+              {
+                "jsonPath": "$.*~",
+                "language": "jsonpath",
+                "name": ""
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "API.get"
+              ],
+              [
+                "date",
+                "$DATE_FROM,$DATE_TO"
+              ],
+              [
+                "period",
+                "month"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": []
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs uniques"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Pages vues"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 8,
+          "y": 7
+        },
+        "id": 23,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": true,
+          "text": {
+            "titleSize": 25,
+            "valueSize": 50
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.nb_uniq_visitors",
+                "language": "jsonpath",
+                "name": "Visiteurs uniques"
+              },
+              {
+                "jsonPath": "$.*~",
+                "language": "jsonpath",
+                "name": ""
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "API.get"
+              ],
+              [
+                "date",
+                "$DATE_FROM,$DATE_TO"
+              ],
+              [
+                "period",
+                "month"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": []
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs uniques"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Pages vues"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 16,
+          "y": 7
+        },
+        "id": 24,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "vertical",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": true,
+          "text": {
+            "titleSize": 25,
+            "valueSize": 50
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.nb_pageviews",
+                "language": "jsonpath",
+                "name": "Pages vues"
+              },
+              {
+                "jsonPath": "$.*~",
+                "language": "jsonpath",
+                "name": ""
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "API.get"
+              ],
+              [
+                "date",
+                "$DATE_FROM,$DATE_TO"
+              ],
+              [
+                "period",
+                "month"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": []
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineStyle": {
+                "fill": "solid"
+              },
+              "lineWidth": 3,
+              "pointSize": 8,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "always",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "decimals": 0,
+            "mappings": [
+              {
+                "options": {
+                  "match": "null",
+                  "result": {
+                    "index": 0,
+                    "text": "0"
+                  }
+                },
+                "type": "special"
+              }
+            ],
+            "noValue": "0",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs uniques"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visites"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "green",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Pages vues"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 10
+        },
+        "id": 25,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$map(\n  $keys($), \n  function($date) {\n    $exists($lookup($, $date).nb_visits) ? $lookup($, $date).nb_visits : null\n  }\n)",
+                "language": "jsonata",
+                "name": "Visites",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$map(\n  $keys($), \n  function($date) {\n    $exists($lookup($, $date).nb_uniq_visitors) ? $lookup($, $date).nb_uniq_visitors : null\n  }\n)",
+                "language": "jsonata",
+                "name": "Visiteurs uniques",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$map(\n  $keys($), \n  function($date) {\n    $exists($lookup($, $date).nb_pageviews) ? $lookup($, $date).nb_pageviews : null\n  }\n)",
+                "language": "jsonata",
+                "name": "Pages vues",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$.*~",
+                "language": "jsonpath",
+                "name": "date",
+                "type": "time"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "API.get"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "day"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Temps moyens passé sur le site par visite.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 2,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 0,
+          "y": 21
+        },
+        "id": 5,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": true,
+          "text": {
+            "titleSize": 25,
+            "valueSize": 50
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*~",
+                "name": "date"
+              },
+              {
+                "jsonPath": "$.*.avg_time_on_site",
+                "language": "jsonpath",
+                "name": "AVG Time"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "API.get"
+              ],
+              [
+                "date",
+                "$DATE_FROM,$DATE_TO"
+              ],
+              [
+                "period",
+                "month"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Moyenne des actions effectuées par visites. (Clique sur un bouton, changement de page, etc...)",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Temps moyen sur le site"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "unit",
+                  "value": "s"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 8,
+          "y": 21
+        },
+        "id": 11,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": true,
+          "text": {
+            "titleSize": 25,
+            "valueSize": 50
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*~",
+                "name": "date"
+              },
+              {
+                "jsonPath": "$.*.nb_actions_per_visit",
+                "language": "jsonpath",
+                "name": "AVG Actions"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "API.get"
+              ],
+              [
+                "date",
+                "$DATE_FROM,$DATE_TO"
+              ],
+              [
+                "period",
+                "month"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Temps que met le site à charger avant d'être entièrement afficher pour les visiteurs.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "decimals": 1,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "blue",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Temps moyen sur le site"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "unit",
+                  "value": "s"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 8,
+          "x": 16,
+          "y": 21
+        },
+        "id": 13,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "inverted",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": true,
+          "text": {
+            "titleSize": 25,
+            "valueSize": 50
+          },
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*~",
+                "name": "date"
+              },
+              {
+                "jsonPath": "$.*.avg_page_load_time",
+                "language": "jsonpath",
+                "name": "AVG Load time"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "API.get"
+              ],
+              [
+                "date",
+                "$DATE_FROM,$DATE_TO"
+              ],
+              [
+                "period",
+                "month"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Liste des pages visitées de votre site.\nLes pages temporaires ne sont pas listées.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto",
+                "wrapText": false
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "fieldMinMax": false,
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs (sum)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "type": "gauge",
+                    "valueDisplayMode": "text"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "Visiteurs"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 14,
+          "w": 24,
+          "x": 0,
+          "y": 24
+        },
+        "id": 2,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": false,
+            "fields": [
+              "Visiteurs (sum)"
+            ],
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visiteurs"
+            }
+          ]
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.label",
+                "name": "Page"
+              },
+              {
+                "jsonPath": "$.*.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Visiteurs"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Actions.getPageUrls"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "title": "Pages les plus vues",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Page": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Visiteurs": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Visiteurs uniques": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "date": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "label": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "filterByValue",
+            "options": {
+              "filters": [
+                {
+                  "config": {
+                    "id": "notSubstring",
+                    "options": {
+                      "value": "?"
+                    }
+                  },
+                  "fieldName": "Page"
+                }
+              ],
+              "match": "any",
+              "type": "include"
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Représentation sur une carte de la localisation des visiteurs de votre site.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "fieldMinMax": false,
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs (sum)"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Visiteurs"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page"
+              },
+              "properties": []
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 12,
+          "x": 0,
+          "y": 38
+        },
+        "id": 7,
+        "options": {
+          "basemap": {
+            "config": {},
+            "name": "Layer 0",
+            "type": "default"
+          },
+          "controls": {
+            "mouseWheelZoom": false,
+            "showAttribution": false,
+            "showDebug": false,
+            "showMeasure": false,
+            "showScale": false,
+            "showZoom": false
+          },
+          "layers": [
+            {
+              "config": {
+                "showLegend": false,
+                "style": {
+                  "color": {
+                    "fixed": "blue"
+                  },
+                  "opacity": 0.4,
+                  "rotation": {
+                    "fixed": 0,
+                    "max": 360,
+                    "min": -360,
+                    "mode": "mod"
+                  },
+                  "size": {
+                    "field": "Visites",
+                    "fixed": 5,
+                    "max": 15,
+                    "min": 2
+                  },
+                  "symbol": {
+                    "fixed": "img/icons/marker/circle.svg",
+                    "mode": "fixed"
+                  },
+                  "symbolAlign": {
+                    "horizontal": "center",
+                    "vertical": "center"
+                  },
+                  "text": {
+                    "fixed": "",
+                    "mode": "field"
+                  },
+                  "textConfig": {
+                    "fontSize": 12,
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "textAlign": "center",
+                    "textBaseline": "middle"
+                  }
+                }
+              },
+              "filterData": {
+                "id": "byRefId",
+                "options": "B"
+              },
+              "location": {
+                "latitude": "Lat",
+                "longitude": "Long",
+                "mode": "coords"
+              },
+              "name": "Nombre de visites",
+              "tooltip": true,
+              "type": "markers"
+            }
+          ],
+          "tooltip": {
+            "mode": "none"
+          },
+          "view": {
+            "allLayers": true,
+            "id": "coords",
+            "lat": 46.935563,
+            "lon": 2.508463,
+            "zoom": 5.37
+          }
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.label",
+                "name": "Label"
+              },
+              {
+                "jsonPath": "$.*.*.long",
+                "language": "jsonpath",
+                "name": "Long"
+              },
+              {
+                "jsonPath": "$.*.*.lat",
+                "language": "jsonpath",
+                "name": "Lat"
+              },
+              {
+                "jsonPath": "$.*.*.nb_uniq_visitors",
+                "language": "jsonpath",
+                "name": "Visites"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "UserCountry.getCity"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "title": "Localisation des visiteurs",
+        "type": "geomap"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Liste des localisations des visiteurs de votre site.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto",
+                "wrapText": false
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "fieldMinMax": false,
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs (sum)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "type": "gauge",
+                    "valueDisplayMode": "text"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "Visiteurs"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 12,
+          "x": 12,
+          "y": 38
+        },
+        "id": 8,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": false,
+            "fields": [
+              "Visiteurs (sum)"
+            ],
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visiteurs"
+            }
+          ]
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.label",
+                "name": "Page"
+              },
+              {
+                "jsonPath": "$.*.*.nb_uniq_visitors",
+                "language": "jsonpath",
+                "name": "Visiteurs"
+              },
+              {
+                "jsonPath": "$.*.*.lat",
+                "language": "jsonpath",
+                "name": ""
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "UserCountry.getCity"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "title": "Localisation des visiteurs",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Page": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Visiteurs": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Visiteurs uniques": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "date": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "label": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "filterByValue",
+            "options": {
+              "filters": [
+                {
+                  "config": {
+                    "id": "notSubstring",
+                    "options": {
+                      "value": "?"
+                    }
+                  },
+                  "fieldName": "Page"
+                }
+              ],
+              "match": "any",
+              "type": "include"
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Répartition par pourcentage des appareils utilisés pour accéder à votre site internet.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "purple",
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "fieldMinMax": false,
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 12,
+          "x": 0,
+          "y": 51
+        },
+        "id": 21,
+        "options": {
+          "displayLabels": [
+            "percent"
+          ],
+          "legend": {
+            "calcs": [],
+            "displayMode": "table",
+            "placement": "bottom",
+            "showLegend": true,
+            "values": [
+              "percent",
+              "value"
+            ]
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "last"
+            ],
+            "fields": "/^nb_visits$/",
+            "values": true
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*[*].label",
+                "language": "jsonpath",
+                "name": ""
+              },
+              {
+                "jsonPath": "$.*[*].nb_visits",
+                "language": "jsonpath",
+                "name": ""
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "DevicesDetection.getType"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "month"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "title": "Répartition des appareils",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Répartition par pourcentage de la source du trafic vers votre site internet.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "purple",
+              "mode": "fixed"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "fieldMinMax": false,
+            "mappings": []
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Accès Direct"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "blue",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Moteurs de recherches"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Publicités"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "semi-dark-red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Réseaux Sociaux"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#9be621",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 13,
+          "w": 12,
+          "x": 12,
+          "y": 51
+        },
+        "id": 20,
+        "options": {
+          "displayLabels": [
+            "percent"
+          ],
+          "legend": {
+            "calcs": [],
+            "displayMode": "table",
+            "placement": "bottom",
+            "showLegend": true,
+            "values": [
+              "percent",
+              "value"
+            ]
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.Referrers_visitorsFromDirectEntry",
+                "language": "jsonpath",
+                "name": "Accès Direct",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$.*.Referrers_visitorsFromSearchEngines",
+                "language": "jsonpath",
+                "name": "Moteurs de recherches",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$.*.Referrers_visitorsFromCampaigns",
+                "language": "jsonpath",
+                "name": "Publicités",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$.*.Referrers_visitorsFromSocialNetworks",
+                "language": "jsonpath",
+                "name": "Réseaux Sociaux",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$.*.Referrers_visitorsFromWebsites",
+                "language": "jsonpath",
+                "name": "Sites internets"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.get"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "month"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "title": "Répartition des referrers",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Affichage sous forme d'historiques des différentes sources qui amènent du trafic vers votre site internet.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "bars",
+              "fillOpacity": 100,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "normal"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "B Sites internet"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "A Moteurs de recherches"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "C Réseaux sociaux"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#9be621",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "D Publicités"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 64
+        },
+        "id": 26,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "hidden",
+            "placement": "right",
+            "showLegend": false
+          },
+          "tooltip": {
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$map(\n  $keys($),\n  function($date) {\n    $sum($lookup($, $date).nb_visits ? $lookup($, $date).nb_visits : [0])\n  }\n)\n",
+                "language": "jsonata",
+                "name": "Sites internet",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$.*~",
+                "language": "jsonpath",
+                "name": "Date",
+                "type": "time"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getWebsites"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "day"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$map(\n  $keys($),\n  function($date) {\n    $sum($lookup($, $date).nb_visits ? $lookup($, $date).nb_visits : [0])\n  }\n)\n",
+                "language": "jsonata",
+                "name": "Moteurs de recherches",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$.*~",
+                "language": "jsonpath",
+                "name": "Date",
+                "type": "time"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getSearchEngines"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "day"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$map(\n  $keys($),\n  function($date) {\n    $sum($lookup($, $date).nb_visits ? $lookup($, $date).nb_visits : [0])\n  }\n)\n",
+                "language": "jsonata",
+                "name": "Réseaux sociaux",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$.*~",
+                "language": "jsonpath",
+                "name": "Date",
+                "type": "time"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getSocials"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "day"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "C",
+            "urlPath": ""
+          },
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$map(\n  $keys($),\n  function($date) {\n    $sum($lookup($, $date).nb_visits ? $lookup($, $date).nb_visits : [0])\n  }\n)\n",
+                "language": "jsonata",
+                "name": "Publicités",
+                "type": "number"
+              },
+              {
+                "jsonPath": "$.*~",
+                "language": "jsonpath",
+                "name": "Date",
+                "type": "time"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getCampaigns"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "day"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "D",
+            "urlPath": ""
+          }
+        ],
+        "title": "Historique des referrers",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "transparent",
+                  "value": null
+                },
+                {
+                  "color": "purple",
+                  "value": 0
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 12,
+          "x": 0,
+          "y": 72
+        },
+        "id": 14,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Referrers : Sites internets"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getWebsites"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "month"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Referrers : Sites internets": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "~": {
+                  "aggregations": []
+                }
+              }
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "yellow",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 12,
+          "x": 12,
+          "y": 72
+        },
+        "id": 15,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Referrers : Moteurs de recherches"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getSearchEngines"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Liste des sites internets d'où viennent les visiteurs de votre site.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto",
+                "wrapText": false
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "fieldMinMax": false,
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs (sum)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "type": "gauge",
+                    "valueDisplayMode": "text"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "Visiteurs"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "purple",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 75
+        },
+        "id": 6,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": false,
+            "fields": [
+              "Visiteurs (sum)"
+            ],
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visiteurs"
+            }
+          ]
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.label",
+                "name": "Page"
+              },
+              {
+                "jsonPath": "$.*.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Visiteurs"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getWebsites"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "title": "Referrers - Sites internets",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Page": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Visiteurs": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Visiteurs uniques": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "date": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "label": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "filterByValue",
+            "options": {
+              "filters": [
+                {
+                  "config": {
+                    "id": "notSubstring",
+                    "options": {
+                      "value": "?"
+                    }
+                  },
+                  "fieldName": "Page"
+                }
+              ],
+              "match": "any",
+              "type": "include"
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Liste des moteurs de recherche d'où viennent les visiteurs de votre site.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto",
+                "wrapText": false
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "fieldMinMax": false,
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs (sum)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "type": "gauge",
+                    "valueDisplayMode": "text"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "Visiteurs"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "yellow",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 75
+        },
+        "id": 19,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": false,
+            "fields": [
+              "Visiteurs (sum)"
+            ],
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visiteurs"
+            }
+          ]
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.label",
+                "name": "Page"
+              },
+              {
+                "jsonPath": "$.*.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Visiteurs"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getSearchEngines"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "title": "Referrers - Moteurs de recherches",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Page": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Visiteurs": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Visiteurs uniques": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "date": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "label": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "filterByValue",
+            "options": {
+              "filters": [
+                {
+                  "config": {
+                    "id": "notSubstring",
+                    "options": {
+                      "value": "?"
+                    }
+                  },
+                  "fieldName": "Page"
+                }
+              ],
+              "match": "any",
+              "type": "include"
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#9be621",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 12,
+          "x": 0,
+          "y": 85
+        },
+        "id": 18,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Referrers : Réseaux Sociaux"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getSocials"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 12,
+          "x": 12,
+          "y": 85
+        },
+        "id": 17,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "/.*/",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Referrers : Publicités"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getCampaigns"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "A",
+            "urlPath": ""
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Listes des réseaux sociaux d'où viennent les visiteurs de votre site.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto",
+                "wrapText": false
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "fieldMinMax": false,
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs (sum)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "type": "gauge",
+                    "valueDisplayMode": "text"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "Visiteurs"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#9be621",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 88
+        },
+        "id": 12,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": false,
+            "fields": [
+              "Visiteurs (sum)"
+            ],
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visiteurs"
+            }
+          ]
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.label",
+                "name": "Page"
+              },
+              {
+                "jsonPath": "$.*.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Visiteurs"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getSocials"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "title": "Referrers - Réseaux sociaux",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Page": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Visiteurs": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Visiteurs uniques": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "date": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "label": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "filterByValue",
+            "options": {
+              "filters": [
+                {
+                  "config": {
+                    "id": "notSubstring",
+                    "options": {
+                      "value": "?"
+                    }
+                  },
+                  "fieldName": "Page"
+                }
+              ],
+              "match": "any",
+              "type": "include"
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "marcusolsson-json-datasource",
+          "uid": "bdt7p5puvauioe"
+        },
+        "description": "Listes des publicités d'où viennent les visiteurs de votre site.",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto",
+                "wrapText": false
+              },
+              "filterable": false,
+              "inspect": false
+            },
+            "fieldMinMax": false,
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Visiteurs (sum)"
+              },
+              "properties": [
+                {
+                  "id": "custom.cellOptions",
+                  "value": {
+                    "type": "gauge",
+                    "valueDisplayMode": "text"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "Visiteurs"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "red",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Page"
+              },
+              "properties": [
+                {
+                  "id": "custom.width"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 88
+        },
+        "id": 16,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "enablePagination": false,
+            "fields": [
+              "Visiteurs (sum)"
+            ],
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true,
+          "sortBy": [
+            {
+              "desc": true,
+              "displayName": "Visiteurs"
+            }
+          ]
+        },
+        "pluginVersion": "11.1.1",
+        "targets": [
+          {
+            "cacheDurationSeconds": 300,
+            "datasource": {
+              "type": "marcusolsson-json-datasource",
+              "uid": "${DATASOURCE}"
+            },
+            "fields": [
+              {
+                "jsonPath": "$.*.*.label",
+                "name": "Page"
+              },
+              {
+                "jsonPath": "$.*.*.nb_visits",
+                "language": "jsonpath",
+                "name": "Visiteurs"
+              }
+            ],
+            "hide": false,
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "Referrers.getCampaigns"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "$period"
+              ],
+              [
+                "flat",
+                "1"
+              ],
+              [
+                "idSite",
+                "$SITEID"
+              ]
+            ],
+            "queryParams": "",
+            "refId": "B",
+            "urlPath": ""
+          }
+        ],
+        "title": "Referrers - Publicités",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "Page": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "Visiteurs": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "Visiteurs uniques": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                },
+                "date": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "label": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                }
+              }
+            }
+          },
+          {
+            "id": "filterByValue",
+            "options": {
+              "filters": [
+                {
+                  "config": {
+                    "id": "notSubstring",
+                    "options": {
+                      "value": "?"
+                    }
+                  },
+                  "fieldName": "Page"
+                }
+              ],
+              "match": "any",
+              "type": "include"
+            }
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "on-kart.com",
+            "value": "on-kart.com"
+          },
+          "hide": 2,
+          "name": "SITE",
+          "options": [
+            {
+              "selected": true,
+              "text": "on-kart.com",
+              "value": "on-kart.com"
+            }
+          ],
+          "query": "on-kart.com",
+          "skipUrlSync": false,
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "9",
+            "value": "9"
+          },
+          "datasource": {
+            "type": "marcusolsson-json-datasource",
+            "uid": "bdt7p5puvauioe"
+          },
+          "definition": "$filter($, function($v) { $v.name = $SITE[0] }).idsite",
+          "description": "",
+          "hide": 2,
+          "includeAll": false,
+          "label": "SITEID",
+          "multi": false,
+          "name": "SITEID",
+          "options": [],
+          "query": {
+            "cacheDurationSeconds": 300,
+            "fields": [
+              {
+                "jsonPath": "$filter($, function($v) { $v.name = $SITE[0] }).idsite",
+                "language": "jsonata"
+              }
+            ],
+            "method": "GET",
+            "params": [
+              [
+                "method",
+                "SitesManager.getAllSites"
+              ],
+              [
+                "date",
+                "${__from:date:YYYY-MM-DD},${__to:date:YYYY-MM-DD}"
+              ],
+              [
+                "period",
+                "year"
+              ]
+            ],
+            "queryParams": "",
+            "urlPath": ""
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "1er juillet 2024 → 31 juillet 2024",
+            "value": "1er juillet 2024 → 31 juillet 2024"
+          },
+          "hide": 2,
+          "name": "Periode",
+          "options": [
+            {
+              "selected": true,
+              "text": "1er juillet 2024 → 31 juillet 2024",
+              "value": "1er juillet 2024 → 31 juillet 2024"
+            }
+          ],
+          "query": "1er juillet 2024 → 31 juillet 2024",
+          "skipUrlSync": false,
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "2024-06-01",
+            "value": "2024-06-01"
+          },
+          "hide": 2,
+          "name": "DATE_FROM",
+          "options": [
+            {
+              "selected": true,
+              "text": "2024-06-01",
+              "value": "2024-06-01"
+            }
+          ],
+          "query": "2024-06-01",
+          "skipUrlSync": false,
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "2024-07-31",
+            "value": "2024-07-31"
+          },
+          "hide": 2,
+          "name": "DATE_TO",
+          "options": [
+            {
+              "selected": true,
+              "text": "2024-07-31",
+              "value": "2024-07-31"
+            }
+          ],
+          "query": "2024-07-31",
+          "skipUrlSync": false,
+          "type": "textbox"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "day",
+            "value": "day"
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "Période",
+          "multi": false,
+          "name": "period",
+          "options": [
+            {
+              "selected": true,
+              "text": "day",
+              "value": "day"
+            },
+            {
+              "selected": false,
+              "text": "week",
+              "value": "week"
+            },
+            {
+              "selected": false,
+              "text": "month",
+              "value": "month"
+            },
+            {
+              "selected": false,
+              "text": "year",
+              "value": "year"
+            },
+            {
+              "selected": false,
+              "text": "range",
+              "value": "range"
+            }
+          ],
+          "query": "day,week,month,year,range",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "2024-06-30T22:00:00.000Z",
+      "to": "2024-07-31T21:59:00.000Z"
+    },
+    "timepicker": {
+      "hidden": true
+    },
+    "timezone": "browser",
+    "title": "Template",
+    "uid": "ddt7qosxibaiof",
+    "version": 3,
+    "weekStart": "monday"
+  }
