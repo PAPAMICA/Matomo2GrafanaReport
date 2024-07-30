@@ -15,7 +15,6 @@
     <br />
 </p>
 
-[TOC]
 
 ## 🎯 Objective
 
